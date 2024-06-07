@@ -14,7 +14,7 @@ export const ok = <T = any>(
 };
 
 export interface IHttpResponse<T = any> {
-  statusCode: HttpStatus;
+  statusCode?: HttpStatus;
   message?: string;
   data?: HttpResponsePayload<T>;
   error?: Error;
