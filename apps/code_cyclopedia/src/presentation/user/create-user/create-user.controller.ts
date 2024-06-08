@@ -30,11 +30,12 @@ export class CreateUserController
     @Body() input: CreateUserInputDto,
   ): Promise<IHttpResponse<CreateUserOutputDto>> {
     try {
-      const { email, username, password } = input;
+      const { email, username, password, repository } = input;
       const response = await this.createUserUseCase.execute({
         password,
         email,
         username,
+        repository,
       });
       const output: Readonly<CreateUserOutputDto> =
         this.createUserDataMapper.mapOutputDto(response.id);
