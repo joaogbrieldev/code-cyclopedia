@@ -1,11 +1,11 @@
-import { IUser } from '@code_cyclopedia/domain/contracts/entities/user';
-import { Column, Entity } from 'typeorm';
-import { BaseModel } from 'libs/shared/infrastructure/db/postgres/models/base.model';
 import { IRepository } from '@code_cyclopedia/domain/contracts/entities/repository';
-import { RepositoryModel } from '../repository/repository.model';
+import { IUser } from '@code_cyclopedia/domain/contracts/entities/user';
+import { BaseModel } from 'libs/shared/infrastructure/db/postgres/models/base.model';
+import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'users' })
 export class UserModel extends BaseModel implements IUser {
+  repository: IRepository;
   @Column({ type: 'varchar', nullable: false })
   username: string;
 
@@ -15,6 +15,6 @@ export class UserModel extends BaseModel implements IUser {
   @Column({ type: 'varchar', nullable: false })
   password: string;
 
-  @Column(() => RepositoryModel)
-  repository: IRepository;
+  // @Column(() => RepositoryModel)
+  // repository: IRepository;
 }

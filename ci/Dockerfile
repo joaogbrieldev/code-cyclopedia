@@ -1,11 +1,9 @@
-FROM node:20-alpine AS base
+FROM node:20-slim
 
-WORKDIR /apps
+RUN apt-get update -y && apt-get install -y openssl
 
-COPY . .
+WORKDIR /home/node/app
 
-RUN rm -rf node_modules
-RUN npm i
+USER node
 
-CMD [ "npm", "start"]
-EXPOSE 3000
+CMD [ "tail", "-f", "/dev/null" ]

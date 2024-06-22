@@ -11,6 +11,7 @@ describe('#CreateUserSpec', () => {
     email: 'any',
     username: 'any',
     password: 'any',
+    repository: null,
   });
   beforeEach(async () => {
     module = await Test.createTestingModule({

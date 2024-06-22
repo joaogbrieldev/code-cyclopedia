@@ -1,6 +1,6 @@
+import { IRepository } from '@code_cyclopedia/domain/contracts/entities/repository';
 import { IUser } from '@code_cyclopedia/domain/contracts/entities/user';
 import { EntityBase } from '../../../../../../libs/shared/domain/data/entities/entity-base';
-import { IRepository } from '@code_cyclopedia/domain/contracts/entities/repository';
 
 export class User extends EntityBase implements IUser {
   constructor(props: IUser) {
@@ -10,7 +10,6 @@ export class User extends EntityBase implements IUser {
   id: string;
   username: string;
   email: string;
-  img: string;
   password: string;
   repository: IRepository;
 }

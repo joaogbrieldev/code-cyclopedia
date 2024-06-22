@@ -1,8 +1,10 @@
-import { UserModel } from './user/user.model';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource, DataSourceOptions } from 'typeorm';
+import { DocumentationModel } from './documentation/documentation.model';
+import { RepositoryModel } from './repository/repository.model';
+import { UserModel } from './user/user.model';
 
 @Module({
   imports: [
@@ -20,7 +22,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
         synchronize: true,
         logging: false,
         autoLoadEntities: false,
-        entities: [UserModel],
+        entities: [UserModel, RepositoryModel, DocumentationModel],
       }),
       dataSourceFactory: async (options: DataSourceOptions) => {
         return new DataSource({
