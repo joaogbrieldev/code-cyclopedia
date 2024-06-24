@@ -1,6 +1,6 @@
 import { IUseCase } from 'libs/shared/use-cases/use-case';
-import { IUser } from '../../entities/user';
 import { IRepository } from '../../entities/repository';
+import { IUser } from '../../entities/user';
 
 export interface ICreateUserInput {
   email: string;
@@ -10,7 +10,6 @@ export interface ICreateUserInput {
 }
 
 export type ICreateUserOutput = IUser;
-
 export abstract class ICreateUser
   implements IUseCase<ICreateUserInput, ICreateUserOutput>
 {
