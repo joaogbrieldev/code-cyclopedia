@@ -8,6 +8,7 @@ describe('#CreateUserSpec', () => {
   let module: TestingModule;
 
   const userFaker = new User({
+    id: '1',
     email: 'any',
     username: 'any',
     password: 'any',

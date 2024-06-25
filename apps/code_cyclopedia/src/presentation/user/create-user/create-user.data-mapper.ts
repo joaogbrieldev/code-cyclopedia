@@ -6,7 +6,7 @@ import { CreateUserOutputDto } from './dtos/create-user-output.dto';
 export class CreateUserDataMapper
   implements IDataMapper<string, CreateUserOutputDto>
 {
-  mapOutputDto(userId: string): Readonly<CreateUserOutputDto> {
-    return new CreateUserOutputDto(userId);
+  mapOutputDto(id: string): Readonly<CreateUserOutputDto> {
+    return new CreateUserOutputDto(id);
   }
 }

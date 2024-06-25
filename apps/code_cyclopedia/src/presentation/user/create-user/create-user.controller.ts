@@ -4,7 +4,7 @@ import {
   ok,
 } from '@code_cyclopedia/domain/contracts/presentation/http';
 import { ICreateUser } from '@code_cyclopedia/domain/contracts/use-cases/user/create-user';
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiBody, ApiHeader, ApiOkResponse } from '@nestjs/swagger';
 import { CreateUserDataMapper } from './create-user.data-mapper';
 import { CreateUserInputDto } from './dtos/create-user-input.dto';
@@ -30,8 +30,9 @@ export class CreateUserController
     @Body() input: CreateUserInputDto,
   ): Promise<IHttpResponse<CreateUserOutputDto>> {
     try {
-      const { email, username, password, repository } = input;
+      const { id, email, username, password, repository } = input;
       const response = await this.createUserUseCase.execute({
+        id,
         password,
         email,
         username,
@@ -40,6 +41,18 @@ export class CreateUserController
       const output: Readonly<CreateUserOutputDto> =
         this.createUserDataMapper.mapOutputDto(response.id);
       return ok(output);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  @Get('/')
+  @ApiHeader({
+    name: 'Content-Type',
+    required: true,
+    enum: ['application/json'],
+  })
+  async save() {
+    return 'Hello world';
   }
 }

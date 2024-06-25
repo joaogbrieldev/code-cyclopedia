@@ -2,9 +2,9 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserOutputDto {
   @ApiProperty()
-  userId: string;
+  id: string;
 
-  constructor(userId: string) {
-    this.userId = userId;
+  constructor(id: string) {
+    this.id = id;
   }
 }
