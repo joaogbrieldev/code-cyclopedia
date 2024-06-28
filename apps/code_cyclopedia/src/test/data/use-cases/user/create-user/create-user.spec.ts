@@ -1,4 +1,5 @@
 import { CreateUserUseCase } from '@code_cyclopedia/data/use-cases/user/create-user/create-user.use-case';
+import { IUserRepository } from '@code_cyclopedia/domain/contracts/repositories/user.repository';
 import { ICreateUser } from '@code_cyclopedia/domain/contracts/use-cases/user/create-user';
 import { User } from '@code_cyclopedia/domain/models/entities/user';
 import { Test, TestingModule } from '@nestjs/testing';
@@ -20,6 +21,10 @@ describe('#CreateUserSpec', () => {
       providers: [
         {
           provide: ICreateUser,
+          useClass: CreateUserUseCase,
+        },
+        {
+          provide: IUserRepository,
           useClass: CreateUserUseCase,
         },
       ],
