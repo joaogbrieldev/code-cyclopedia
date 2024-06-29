@@ -7,6 +7,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 describe('#CreateUserSpec', () => {
   let sut: ICreateUser;
   let module: TestingModule;
+  let userRepository: IUserRepository;
 
   const userFaker = new User({
     id: '1',
@@ -25,19 +26,18 @@ describe('#CreateUserSpec', () => {
         },
         {
           provide: IUserRepository,
-          useClass: CreateUserUseCase,
+          useValue: {
+            create: jest.fn().mockResolvedValue(userFaker),
+          },
         },
       ],
     }).compile();
     sut = await module.get(ICreateUser);
+    userRepository = await module.resolve(IUserRepository);
   });
   test('should be return a user', async () => {
     const promise = await sut.execute(userFaker);
     console.log(promise);
     expect(promise).toStrictEqual(userFaker);
-  });
-  test('should be return a ucgbgfnser', async () => {
-    const promise = 5;
-    expect(promise).toStrictEqual(5);
   });
 });
