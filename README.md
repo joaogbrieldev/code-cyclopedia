@@ -26,7 +26,7 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Code Cyclopedia
+## Code Cyclopedia - Readm app
 
 ## Installation
 
