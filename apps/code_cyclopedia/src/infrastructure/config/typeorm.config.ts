@@ -2,13 +2,19 @@ import { EntityClassOrSchema } from '@nestjs/typeorm/dist/interfaces/entity-clas
 import { config } from 'dotenv';
 import * as path from 'path';
 import { DataSource } from 'typeorm';
+import { DocumentationModel } from '../db/postgres/documentation/documentation.model';
+import { RepositoryModel } from '../db/postgres/repository/repository.model';
 import { UserModel } from '../db/postgres/user/user.model';
 
 export const getDataSourceName = (): string => 'default';
 
 config({ path: './apps/checktudo/.env' });
 
-export const allModels: EntityClassOrSchema[] = [UserModel];
+export const allModels: EntityClassOrSchema[] = [
+  UserModel,
+  DocumentationModel,
+  RepositoryModel,
+];
 
 export default new DataSource({
   type: 'postgres',
@@ -19,5 +25,6 @@ export default new DataSource({
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
   entities: [...allModels],
+  synchronize: false,
   migrations: [path.join(__dirname, '../db/postgres/migrations/*.{js,ts}')],
 });

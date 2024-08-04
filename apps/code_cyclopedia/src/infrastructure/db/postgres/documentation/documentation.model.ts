@@ -11,7 +11,7 @@ export class DocumentationModel extends BaseModel implements IDocumentation {
   // @Column(() => UserModel)
   // ownerUser: IUser;
 
-  @Column({ type: 'varchar', nullable: false })
+  @Column({ type: 'varchar' })
   body: string;
 
   // @Column(() => RepositoryModel)

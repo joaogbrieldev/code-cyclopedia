@@ -37,7 +37,12 @@ describe('#CreateUserSpec', () => {
   });
   test('should be return a user', async () => {
     const promise = await sut.execute(userFaker);
-    console.log(promise);
+    expect(promise).toStrictEqual(userFaker);
+  });
+  test('should be call repository method', async () => {
+    const promise = await sut.execute(userFaker);
+    const spy = jest.spyOn(userRepository, 'create');
+    expect(spy).toHaveBeenCalledTimes(1);
     expect(promise).toStrictEqual(userFaker);
   });
 });

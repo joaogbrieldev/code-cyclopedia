@@ -6,13 +6,14 @@ import { Column, Entity } from 'typeorm';
 @Entity({ name: 'users' })
 export class UserModel extends BaseModel implements IUser {
   repository: IRepository;
-  @Column({ type: 'varchar', nullable: false })
+
+  @Column({ type: 'varchar', default: 'x' })
   username: string;
 
-  @Column({ type: 'varchar', nullable: false })
+  @Column({ type: 'varchar', default: 'x' })
   email: string;
 
-  @Column({ type: 'varchar', nullable: false })
+  @Column({ type: 'varchar', default: 'x' })
   password: string;
 
   // @Column(() => RepositoryModel)
