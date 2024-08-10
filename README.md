@@ -23,7 +23,9 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
-
+## Feature working now:
+ - Login with GitHub
+   
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Code Cyclopedia - Readme app
