@@ -24,13 +24,11 @@
 
 # In progress... 🚧
 
-## Description
 ## Feature working now:
- - Login with GitHub
+ - EDA
+ - CQRS
    
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Code Cyclopedia - Readme app
 
 ## Installation
 
