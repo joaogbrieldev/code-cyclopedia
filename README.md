@@ -25,9 +25,14 @@
 # In progress... 🚧
 
 ## Description
+
 ## Feature working now:
- - Login with GitHub
-   
+
+```bash
+  CQRS -> Estou usando para otimizar Leitura e Escrita individualmente
+  Separação de responsabilidades, Escalabilidade, Flexibilidade e Performance
+```
+
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Code Cyclopedia - Readme app
