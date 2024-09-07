@@ -11,6 +11,6 @@ export interface IUser extends IEntityBase {
   username: string;
   email: string;
   password: string;
-  documentations: Array<IDocumentation>;
+  documentations: IDocumentation[];
   repository: IRepository;
 }

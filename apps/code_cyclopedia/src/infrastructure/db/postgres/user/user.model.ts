@@ -21,7 +21,7 @@ export class UserModel extends BaseModel implements IUser {
   @OneToMany(
     () => DocumentationModel,
     (documentationModel: DocumentationModel) => documentationModel.ownerUser,
-    { cascade: true, eager: true },
+    { cascade: true },
   )
   @JoinColumn()
   documentations: IDocumentation[];

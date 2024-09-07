@@ -7,14 +7,13 @@ import { UserModel } from '../user/user.model';
 
 @Entity({ name: 'documentation' })
 export class DocumentationModel extends BaseModel implements IDocumentation {
-  ownerUser: IUser;
   repository: IRepository;
 
   @ManyToOne(
     () => UserModel,
     (userModel: UserModel) => userModel.documentations,
   )
-  billing: IUser;
+  ownerUser: IUser;
 
   @Column({ type: 'varchar' })
   body: string;
