@@ -26,12 +26,11 @@
 
 ## Feature working now:
 
+
 ```bash
   CQRS -> Estou usando para otimizar Leitura e Escrita individualmente
   Separação de responsabilidades, Escalabilidade, Flexibilidade e Performance
 ```
-
-## Code Cyclopedia - Readme app
 
 ## Installation
 
