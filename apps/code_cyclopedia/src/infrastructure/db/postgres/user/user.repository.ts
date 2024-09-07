@@ -26,6 +26,7 @@ export class UserRepositoryAdapter
       id: normalizedPersistencyObject.id,
       email: normalizedPersistencyObject.email,
       username: normalizedPersistencyObject.username,
+      documentations: normalizedPersistencyObject.documentations,
       password: normalizedPersistencyObject.password,
       createdAt: normalizedPersistencyObject.createdAt,
       updatedAt: normalizedPersistencyObject.updatedAt,

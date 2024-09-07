@@ -31,7 +31,8 @@ export class CreateUserController
     @Body() input: CreateUserInputDto,
   ): Promise<IHttpResponse<CreateUserOutputDto>> {
     try {
-      const { id, email, username, password, repository } = input;
+      const { id, email, username, password, repository, documentations } =
+        input;
       const saltOrRounds = 10;
       const hash = await bcrypt.hash(password, saltOrRounds);
       const response = await this.createUserUseCase.execute({
@@ -39,6 +40,7 @@ export class CreateUserController
         password: hash,
         email,
         username,
+        documentations,
         repository,
       });
       const output: Readonly<CreateUserOutputDto> =
