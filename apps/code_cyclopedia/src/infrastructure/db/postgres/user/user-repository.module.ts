@@ -1,6 +1,7 @@
 import { IUserRepository } from '@code_cyclopedia/domain/contracts/repositories/user.repository';
 import { getDataSourceName } from '@code_cyclopedia/infrastructure/config/typeorm.config';
 import { Module, Provider } from '@nestjs/common';
+import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EntityClassOrSchema } from '@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type';
 import { UserModel } from './user.model';
@@ -14,7 +15,10 @@ const userRepositoryProvider: Provider = {
 const models: EntityClassOrSchema[] = [UserModel];
 
 @Module({
-  imports: [TypeOrmModule.forFeature([...models], getDataSourceName())],
+  imports: [
+    CqrsModule,
+    TypeOrmModule.forFeature([...models], getDataSourceName()),
+  ],
   providers: [userRepositoryProvider],
   exports: [userRepositoryProvider],
 })

@@ -25,10 +25,12 @@
 # In progress... 🚧
 
 ## Feature working now:
- - EDA
- - CQRS
-   
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+
+
+```bash
+  CQRS -> Estou usando para otimizar Leitura e Escrita individualmente
+  Separação de responsabilidades, Escalabilidade, Flexibilidade e Performance
+```
 
 ## Installation
 

@@ -1,4 +1,5 @@
 import { IEntityBase } from 'libs/shared/domain/models/entities/entity-base';
+import { IDocumentation } from './documentation';
 import { IRepository } from './repository';
 
 export interface IUserBehavior {
@@ -10,5 +11,6 @@ export interface IUser extends IEntityBase {
   username: string;
   email: string;
   password: string;
+  documentations: IDocumentation[];
   repository: IRepository;
 }
