@@ -29,7 +29,7 @@
 
 ```bash
   CQRS -> Estou usando para otimizar Leitura e Escrita individualmente
-  Separação de responsabilidades, Escalabilidade, Flexibilidade e Performance
+  Separação de responsabilidades, Escalabilidade, Flexibilidade e Performance 🚧
 ```
 
 ## Installation
