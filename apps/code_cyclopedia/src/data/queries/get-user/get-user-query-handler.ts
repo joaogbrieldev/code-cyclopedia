@@ -9,10 +9,13 @@ export class GetAllUsersQueryHandler
   implements IQueryHandler<GetAllUsersQuery>
 {
   logger = new Logger(GetAllUsersQueryHandler.name);
+
   constructor(
-    @Inject('IUserRepository') private readonly userRepository: IUserRepository,
+    @Inject(IUserRepository)
+    private readonly userRepository: IUserRepository,
   ) {}
-  async execute(_: GetAllUsersQuery): Promise<UserDto> {
+
+  async execute(): Promise<UserDto> {
     this.logger.log('[GetAllUsersQueryHandler] Executing query...');
     const users = await this.userRepository.getAll();
     return users;
