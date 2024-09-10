@@ -1,9 +1,7 @@
 import { IUserRepository } from '@code_cyclopedia/domain/contracts/repositories/user.repository';
-import { getDataSourceName } from '@code_cyclopedia/infrastructure/config/typeorm.config';
 import { Module, Provider } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { EntityClassOrSchema } from '@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type';
 import { UserModel } from './user.model';
 import { UserRepositoryAdapter } from './user.repository';
 
@@ -12,14 +10,12 @@ const userRepositoryProvider: Provider = {
   useClass: UserRepositoryAdapter,
 };
 
-const models: EntityClassOrSchema[] = [UserModel];
-
 @Module({
   imports: [
     CqrsModule,
-    TypeOrmModule.forFeature([...models], getDataSourceName()),
+    TypeOrmModule.forFeature([UserModel]), // Certifique-se de que o UserModel é registrado aqui
   ],
   providers: [userRepositoryProvider],
-  exports: [userRepositoryProvider],
+  exports: [userRepositoryProvider], // Certifique-se de exportar o provedor
 })
 export class UserRepositoryModule {}
