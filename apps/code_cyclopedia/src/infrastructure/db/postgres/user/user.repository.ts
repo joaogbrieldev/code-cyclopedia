@@ -35,6 +35,14 @@ export class UserRepositoryAdapter
     });
   }
   async getAll(): Promise<IUser> {
-    throw new Error('Method not implemented.');
+    const dados: IUser = {
+      username: null,
+      email: null,
+      password: null,
+      documentations: null,
+      repository: null,
+    };
+
+    return dados;
   }
 }
