@@ -4,7 +4,7 @@ import { CreateUserController } from './create-user.controller';
 import { CreateUserDataMapper } from './create-user.data-mapper';
 
 @Module({
-  imports: [CreateUserDataModule], // Certifique-se de importar o módulo que fornece ICreateUser
+  imports: [CreateUserDataModule],
   providers: [CreateUserDataMapper],
   controllers: [CreateUserController],
 })

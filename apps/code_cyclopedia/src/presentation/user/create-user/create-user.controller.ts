@@ -4,7 +4,7 @@ import {
   ok,
 } from '@code_cyclopedia/domain/contracts/presentation/http';
 import { ICreateUser } from '@code_cyclopedia/domain/contracts/use-cases/user/create-user';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { ApiBody, ApiHeader, ApiOkResponse } from '@nestjs/swagger';
 import * as bcrypt from 'bcrypt';
 import { CreateUserDataMapper } from './create-user.data-mapper';
@@ -49,15 +49,5 @@ export class CreateUserController
     } catch (error) {
       console.log(error);
     }
-  }
-
-  @Get('/')
-  @ApiHeader({
-    name: 'Content-Type',
-    required: true,
-    enum: ['application/json'],
-  })
-  async save() {
-    return 'Hello world';
   }
 }

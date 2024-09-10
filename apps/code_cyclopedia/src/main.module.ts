@@ -3,11 +3,13 @@ import { ConfigModule } from '@nestjs/config';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { PostgresModule } from './infrastructure/db/postgres/postgres.module';
 import { CreateUserModule } from './presentation/user/create-user/create-user.module';
+import { GetUsersModule } from './presentation/user/get-user/get-users.module';
 
 @Module({
   imports: [
     PostgresModule,
     CreateUserModule,
+    GetUsersModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),

@@ -1,3 +1,4 @@
+import { IUser } from '@code_cyclopedia/domain/contracts/entities/user';
 import { IUserRepository } from '@code_cyclopedia/domain/contracts/repositories/user.repository';
 import { User } from '@code_cyclopedia/domain/models/entities/user';
 import { getDataSourceName } from '@code_cyclopedia/infrastructure/config/typeorm.config';
@@ -32,5 +33,8 @@ export class UserRepositoryAdapter
       updatedAt: normalizedPersistencyObject.updatedAt,
       repository: normalizedPersistencyObject.repository,
     });
+  }
+  async getAll(): Promise<IUser> {
+    throw new Error('Method not implemented.');
   }
 }
