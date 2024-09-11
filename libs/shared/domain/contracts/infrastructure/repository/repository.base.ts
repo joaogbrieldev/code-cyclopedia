@@ -59,4 +59,6 @@ export abstract class IRepositoryBase<DomainModel extends IEntityBase> {
     opulate?: string[],
     shouldLoadRelations?: boolean,
   ): Promise<DomainModel>;
+
+  abstract findAll(): Promise<DomainModel[]>;
 }
