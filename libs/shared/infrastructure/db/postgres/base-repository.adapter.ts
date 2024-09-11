@@ -200,4 +200,8 @@ export abstract class BaseRepositoryPostgresAdapter<
       this.mapToDomain(item),
     );
   }
+
+  async findAll(): Promise<DomainModel[]> {
+    return this.repository.find();
+  }
 }
