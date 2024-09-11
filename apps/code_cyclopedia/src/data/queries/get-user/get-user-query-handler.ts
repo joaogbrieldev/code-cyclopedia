@@ -1,8 +1,13 @@
 import { IUserRepository } from '@code_cyclopedia/domain/contracts/repositories/user.repository';
+import { User } from '@code_cyclopedia/domain/models/entities/user';
 import { Inject, Logger } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { UserDto } from './get-user.dto';
 import { GetAllUsersQuery } from './get-user.query';
+
+type Output = {
+  data: UserDto[];
+};
 
 @QueryHandler(GetAllUsersQuery)
 export class GetAllUsersQueryHandler
@@ -15,9 +20,11 @@ export class GetAllUsersQueryHandler
     private readonly userRepository: IUserRepository,
   ) {}
 
-  async execute(): Promise<UserDto> {
+  async execute(): Promise<Output> {
     this.logger.log('[GetAllUsersQueryHandler] Executing query...');
-    const users = await this.userRepository.getAll();
-    return users;
+    const users = await this.userRepository.findAll();
+    return {
+      data: users.map((item) => new User(item)),
+    };
   }
 }
