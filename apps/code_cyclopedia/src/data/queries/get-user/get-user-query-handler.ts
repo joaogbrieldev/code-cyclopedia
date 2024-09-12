@@ -1,9 +1,9 @@
 import { IUserRepository } from '@code_cyclopedia/domain/contracts/repositories/user.repository';
+import { GetAllUsersQuery } from '@code_cyclopedia/domain/cqrs/get-user';
 import { User } from '@code_cyclopedia/domain/models/entities/user';
 import { Inject, Logger } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { UserDto } from './get-user.dto';
-import { GetAllUsersQuery } from './get-user.query';
 
 type Output = {
   data: UserDto[];
