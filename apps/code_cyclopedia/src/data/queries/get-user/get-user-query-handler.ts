@@ -5,7 +5,7 @@ import { Inject, Logger } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { UserDto } from './get-user.dto';
 
-type Output = {
+export type Output = {
   data: UserDto[];
 };
 

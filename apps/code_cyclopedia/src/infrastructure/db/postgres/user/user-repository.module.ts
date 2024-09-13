@@ -11,11 +11,8 @@ const userRepositoryProvider: Provider = {
 };
 
 @Module({
-  imports: [
-    CqrsModule,
-    TypeOrmModule.forFeature([UserModel]), // Certifique-se de que o UserModel é registrado aqui
-  ],
+  imports: [CqrsModule, TypeOrmModule.forFeature([UserModel])],
   providers: [userRepositoryProvider],
-  exports: [userRepositoryProvider], // Certifique-se de exportar o provedor
+  exports: [userRepositoryProvider],
 })
 export class UserRepositoryModule {}
