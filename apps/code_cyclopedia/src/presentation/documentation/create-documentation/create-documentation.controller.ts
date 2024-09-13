@@ -1,5 +1,5 @@
 import { ICreateDocumentationUseCase } from '@code_cyclopedia/domain/contracts/use-cases/documentation/create-documentation';
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { ApiHeader } from '@nestjs/swagger';
 
 @Controller('documentation')
@@ -13,7 +13,7 @@ export class CreateDocumentationController {
     required: true,
     enum: ['application/json'],
   })
-  async handle(input): Promise<void> {
-    return this.createDocumentationUseCase.execute(input);
+  async handle(@Body() input): Promise<void> {
+    await this.createDocumentationUseCase.execute(input);
   }
 }

@@ -13,7 +13,7 @@ export class CreateDocumentationCommandHandler
     @Inject(IDocumentationRepository)
     private documentationRepository: IDocumentationRepository,
   ) {}
-  async execute({ command }: ICreateDocumentationCommand): Promise<void> {
+  async execute(command: ICreateDocumentationCommand): Promise<void> {
     this.logger.log('[CreateDocumentation] Executing handler');
     const documentation: Documentation = new Documentation({
       ownerUser: command.userId,
