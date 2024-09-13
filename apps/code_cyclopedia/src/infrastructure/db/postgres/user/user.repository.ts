@@ -30,7 +30,6 @@ export class UserRepositoryAdapter
       password: normalizedPersistencyObject.password,
       createdAt: normalizedPersistencyObject.createdAt,
       updatedAt: normalizedPersistencyObject.updatedAt,
-      repository: normalizedPersistencyObject.repository,
     });
   }
 }
