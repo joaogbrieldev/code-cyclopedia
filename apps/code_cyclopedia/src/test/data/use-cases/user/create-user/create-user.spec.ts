@@ -15,7 +15,6 @@ describe('#CreateUserSpec', () => {
     email: 'any',
     username: 'any',
     password: 'any',
-    repository: null,
     documentations: [],
   });
   beforeEach(async () => {
