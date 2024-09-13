@@ -1,5 +1,6 @@
 import { ICreateDocumentationUseCase } from '@code_cyclopedia/domain/contracts/use-cases/documentation/create-documentation';
 import { Module, Provider } from '@nestjs/common';
+import { CqrsModule } from '@nestjs/cqrs';
 import { CreateDocumentationUseCase } from './create-doc.use-case';
 
 export const createDocumentationProvider: Provider = {
@@ -8,7 +9,7 @@ export const createDocumentationProvider: Provider = {
 };
 
 @Module({
-  imports: [],
+  imports: [CqrsModule],
   providers: [createDocumentationProvider],
   exports: [createDocumentationProvider],
 })

@@ -1,5 +1,6 @@
 export type ICreateDocumentationInput = {
   body: string;
+  userId: string;
 };
 
 export abstract class ICreateDocumentationUseCase {
