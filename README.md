@@ -32,6 +32,10 @@
   Separação de responsabilidades, Escalabilidade, Flexibilidade e Performance 🚧
 ```
 
+```bash
+  Event Sourcing 🚧
+```
+
 ## Installation
 
 ```bash
