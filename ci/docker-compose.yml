@@ -1,15 +1,6 @@
-version: '3.7'
+version: '3'
 
 services:
-  postgres:
-    image: postgres:latest
-    ports:
-      - '5432:5432'
-    environment:
-      - POSTGRES_USER=docker
-      - POSTGRES_PASSWORD=123456789
-      - POSTGRES_DB=code_cyclopedia
-
   app:
     build: .
     ports:
