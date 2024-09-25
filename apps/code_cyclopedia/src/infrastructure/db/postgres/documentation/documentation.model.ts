@@ -7,7 +7,7 @@ import { UserModel } from '../user/user.model';
 export class DocumentationModel extends BaseModel implements IDocumentation {
   @ManyToOne(
     () => UserModel,
-    (userModel: UserModel) => userModel.documentations,
+    (ownerUser: UserModel) => ownerUser.documentations,
   )
   ownerUser: string;
 

@@ -10,7 +10,21 @@ export const createUserProvider: Provider = {
 
 @Module({
   providers: [createUserProvider],
-  imports: [UserRepositoryModule],
+  imports: [
+    UserRepositoryModule,
+    //   ClientsModule.register([
+    //     {
+    //       name: 'CODE_CYCLOPEDIA_SERVICE',
+    //       transport: Transport.KAFKA,
+    //       options: {
+    //         client: {
+    //           clientId: 'code_cyclopedia',
+    //           brokers: ['kafka:29092'],
+    //         },
+    //       },
+    //     },
+    //   ]),
+  ],
   exports: [createUserProvider],
 })
 export class CreateUserDataModule {}
