@@ -3,6 +3,10 @@
 /node_modules
 /build
 
+dbdata/
+node_modules/
+.history/
+
 # Logs
 logs
 *.log
