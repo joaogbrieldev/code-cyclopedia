@@ -22,7 +22,7 @@ import { UserModel } from './user/user.model';
           password: envService.get<string>('POSTGRES_PASSWORD'),
           database: dbName,
           schema: envService.get<string>('POSTGRES_SCHEMA'),
-          synchronize: true,
+          synchronize: false,
           logging: false,
           autoLoadEntities: false,
           entities: [UserModel, RepositoryModel, DocumentationModel],

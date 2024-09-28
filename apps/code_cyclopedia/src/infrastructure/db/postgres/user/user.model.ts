@@ -6,13 +6,13 @@ import { DocumentationModel } from '../documentation/documentation.model';
 
 @Entity({ name: 'users' })
 export class UserModel extends BaseModel implements IUser {
-  @Column({ type: 'varchar', default: 'x' })
+  @Column({ type: 'varchar' })
   username: string;
 
-  @Column({ type: 'varchar', default: 'x' })
+  @Column({ type: 'varchar' })
   email: string;
 
-  @Column({ type: 'varchar', default: 'x' })
+  @Column({ type: 'varchar' })
   password: string;
 
   @OneToMany(
