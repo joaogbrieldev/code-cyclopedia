@@ -10,7 +10,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class CreateUserUseCase implements ICreateUser {
-  constructor(private readonly _userRepository: IUserRepository) {} // @todo -> move to use command cqrs
+  constructor(private readonly _userRepository: IUserRepository) {} // @todo -> move to use Command cqrs
   async execute(input: ICreateUserInput): Promise<ICreateUserOutput> {
     const user: User = new User({
       id: input.id,
