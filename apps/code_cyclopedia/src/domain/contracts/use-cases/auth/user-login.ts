@@ -5,8 +5,12 @@ export type IUserLoginInput = {
   password: string;
 };
 
+export type IUserLoginOutput = {
+  token: string;
+};
+
 export abstract class IUserLoginUseCase
-  implements IUseCase<IUserLoginInput, void>
+  implements IUseCase<IUserLoginInput, IUserLoginOutput>
 {
-  abstract execute(input: IUserLoginInput): Promise<void>;
+  abstract execute(input: IUserLoginInput): Promise<IUserLoginOutput>;
 }
