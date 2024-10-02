@@ -1,4 +1,45 @@
-import { Controller } from '@nestjs/common';
+import { IController } from '@code_cyclopedia/domain/contracts/presentation/controller';
+import {
+  IHttpResponse,
+  ok,
+} from '@code_cyclopedia/domain/contracts/presentation/http';
+import {
+  IUserLoginInput,
+  IUserLoginUseCase,
+} from '@code_cyclopedia/domain/contracts/use-cases/auth/user-login';
+import { Body, Controller, Post } from '@nestjs/common';
+import { ApiHeader } from '@nestjs/swagger';
+import { UserLoginOutputDto } from './dto/user-login-output.dto';
+import { UserLoginDataMapper } from './user-login.data-mapper';
 
 @Controller('auth')
-export class UserLoginController {}
+export class UserLoginController
+  implements IController<IUserLoginInput, UserLoginOutputDto>
+{
+  constructor(
+    private readonly userLoginUseCase: IUserLoginUseCase,
+    private readonly userLoginDataMapper: UserLoginDataMapper,
+  ) {}
+  @Post('/auth')
+  @ApiHeader({
+    name: 'Content-Type',
+    required: true,
+    enum: ['application/json'],
+  })
+  async handle(
+    @Body() input: IUserLoginInput,
+  ): Promise<IHttpResponse<UserLoginOutputDto | Error>> {
+    try {
+      const { email, password } = input;
+      const response = await this.userLoginUseCase.execute({
+        password,
+        email,
+      });
+      const output: Readonly<UserLoginOutputDto> =
+        this.userLoginDataMapper.mapOutputDto(response.token);
+      return ok(output);
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+}
