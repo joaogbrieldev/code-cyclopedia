@@ -12,7 +12,7 @@ import { ApiHeader } from '@nestjs/swagger';
 import { UserLoginOutputDto } from './dto/user-login-output.dto';
 import { UserLoginDataMapper } from './user-login.data-mapper';
 
-@Controller('auth')
+@Controller('/auth')
 export class UserLoginController
   implements IController<IUserLoginInput, UserLoginOutputDto>
 {
@@ -20,7 +20,7 @@ export class UserLoginController
     private readonly userLoginUseCase: IUserLoginUseCase,
     private readonly userLoginDataMapper: UserLoginDataMapper,
   ) {}
-  @Post('/auth')
+  @Post('/')
   @ApiHeader({
     name: 'Content-Type',
     required: true,
@@ -30,10 +30,11 @@ export class UserLoginController
     @Body() input: IUserLoginInput,
   ): Promise<IHttpResponse<UserLoginOutputDto | Error>> {
     try {
-      const { email, password } = input;
+      const { email, password, userId } = input;
       const response = await this.userLoginUseCase.execute({
-        password,
         email,
+        password,
+        userId,
       });
       const output: Readonly<UserLoginOutputDto> =
         this.userLoginDataMapper.mapOutputDto(response.token);
