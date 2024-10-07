@@ -1,3 +1,4 @@
+import { ITokenizationService } from '@code_cyclopedia/domain/contracts/infra-services/tokenization.service';
 import { IUserRepository } from '@code_cyclopedia/domain/contracts/repositories/user.repository';
 import {
   IUserLoginInput,
@@ -9,7 +10,10 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserLoginUseCase implements IUserLoginUseCase {
-  constructor(private readonly _userRepository: IUserRepository) {}
+  constructor(
+    private readonly _userRepository: IUserRepository,
+    private readonly _tokenizationService: ITokenizationService,
+  ) {}
   async execute(input: IUserLoginInput): Promise<IUserLoginOutput> {
     this._validateEmail(input.email);
 
@@ -17,7 +21,11 @@ export class UserLoginUseCase implements IUserLoginUseCase {
 
     await this._validatePassword(input.password, user.password);
 
-    const token = 'any_token';
+    const payload = {
+      userId: user.id,
+    };
+
+    const { token } = await this._tokenizationService.generateTokens(payload);
 
     return { token };
   }
