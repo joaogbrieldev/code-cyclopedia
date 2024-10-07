@@ -3,6 +3,7 @@ import { IUseCase } from 'libs/shared/use-cases/use-case';
 export type IUserLoginInput = {
   email: string;
   password: string;
+  userId: string;
 };
 
 export type IUserLoginOutput = {
