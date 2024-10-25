@@ -27,7 +27,7 @@
 ## Feature working now:
 
 ```bash
-  Auth - Keycloak 🚧
+  Deploy 🚧
 ```
 
 ## Installation
