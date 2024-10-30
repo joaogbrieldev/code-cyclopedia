@@ -30,14 +30,14 @@ export class UserLoginController
     @Body() input: IUserLoginInput,
   ): Promise<IHttpResponse<UserLoginOutputDto | Error>> {
     try {
-      const { email, password, userId } = input;
+      const { email, password } = input;
       const response = await this.userLoginUseCase.execute({
         email,
         password,
-        userId,
+
       });
       const output: Readonly<UserLoginOutputDto> =
-        this.userLoginDataMapper.mapOutputDto(response.token);
+        this.userLoginDataMapper.mapOutputDto(response.token, response.username, response.id);
       return ok(output);
     } catch (error) {
       throw new Error(error);
