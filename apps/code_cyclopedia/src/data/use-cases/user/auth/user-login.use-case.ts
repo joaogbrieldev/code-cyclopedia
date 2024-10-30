@@ -17,7 +17,7 @@ export class UserLoginUseCase implements IUserLoginUseCase {
   async execute(input: IUserLoginInput): Promise<IUserLoginOutput> {
     this._validateEmail(input.email);
 
-    const user = await this._userRepository.get(input.userId);
+    const user = await this._userRepository.getOne({ email: input.email });
 
     await this._validatePassword(input.password, user.password);
 
@@ -26,8 +26,8 @@ export class UserLoginUseCase implements IUserLoginUseCase {
     };
 
     const { token } = await this._tokenizationService.generateTokens(payload);
-
-    return { token };
+    return { token, username: user.username, id: user.id };
+  
   }
 
   private _validateEmail(email: string) {
