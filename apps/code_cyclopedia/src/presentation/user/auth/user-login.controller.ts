@@ -34,10 +34,13 @@ export class UserLoginController
       const response = await this.userLoginUseCase.execute({
         email,
         password,
-
       });
       const output: Readonly<UserLoginOutputDto> =
-        this.userLoginDataMapper.mapOutputDto(response.token, response.username, response.id);
+        this.userLoginDataMapper.mapOutputDto(
+          response.token,
+          response.username,
+          response.id,
+        );
       return ok(output);
     } catch (error) {
       throw new Error(error);
