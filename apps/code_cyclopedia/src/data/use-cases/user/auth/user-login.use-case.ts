@@ -23,11 +23,11 @@ export class UserLoginUseCase implements IUserLoginUseCase {
 
     const payload = {
       userId: user.id,
+      username: user.username,
     };
 
     const { token } = await this._tokenizationService.generateTokens(payload);
     return { token, username: user.username, id: user.id };
-  
   }
 
   private _validateEmail(email: string) {
