@@ -7,6 +7,7 @@ import { ICreateUser } from '@code_cyclopedia/domain/contracts/use-cases/user/cr
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiBody, ApiHeader, ApiOkResponse } from '@nestjs/swagger';
 import * as bcrypt from 'bcrypt';
+import { v4 as uuid } from 'uuid';
 import { CreateUserDataMapper } from './create-user.data-mapper';
 import { CreateUserInputDto } from './dtos/create-user-input.dto';
 import { CreateUserOutputDto } from './dtos/create-user-output.dto';
@@ -31,11 +32,11 @@ export class CreateUserController
     @Body() input: CreateUserInputDto,
   ): Promise<IHttpResponse<CreateUserOutputDto>> {
     try {
-      const { id, email, username, password } = input;
+      const { email, username, password } = input;
       const saltOrRounds = 10;
       const hash = await bcrypt.hash(password, saltOrRounds);
       const response = await this.createUserUseCase.execute({
-        id,
+        id: uuid(),
         password: hash,
         email,
         username,
